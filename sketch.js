@@ -2,6 +2,7 @@ var ctracker, cnv, videoInput;
 var glasses, moustache, whiskers, pipe, ears, hat, nose;
 var mode, saving;
 
+/* Charger et stocker les images dans des variables (p5.js)*/
 function preload(){
     glasses = loadImage("img/glasses.png");
     moustache = loadImage("img/moustache.png");
@@ -12,18 +13,19 @@ function preload(){
     nose = loadImage("img/nose.png");
 }
 
+/* Parametrage de l'app */
 function setup(){
-    videoInput = createCapture(VIDEO);
+    videoInput = createCapture(VIDEO); //Créer la video a partir de la webcam
     videoInput.size(800, 600);
     videoInput.position(0, 0);
     cnv = createCanvas(800, 600);
     cnv.position(0, 0);
-    pixelDensity(1);
+    pixelDensity(1); //ignorer les affichages a haute densite (necessaire pour l'enregistrement de l'image)
     
-    ctracker = new clm.tracker();
+    ctracker = new clm.tracker(); //ajouter le tracker
     ctracker.init(pModel);
     ctracker.start(videoInput.elt);
-    noStroke();
+    //noStroke();
     mode = 1;
     saving = false;
 }
